@@ -1,83 +1,160 @@
-.browsehappy {
-  margin: 0.2em 0;
-  background: #ccc;
-  color: #000;
-  padding: 0.2em 0;
+* {
+	box-sizing: border-box
 }
 
-body {
-  padding: 0;
+.block {
+	display: block
 }
 
-/* Everything but the jumbotron gets side spacing for mobile first views */
-.header,
-.marketing,
-.footer {
-  padding-left: 15px;
-  padding-right: 15px;
+html, body {
+	background: #e3e0cf;
+	color: #333
 }
 
-/* Custom page header */
-.header {
-  border-bottom: 1px solid #e5e5e5;
-  margin-bottom: 10px;
-}
-/* Make the masthead heading the same height as the navigation */
-.header h3 {
-  margin-top: 0;
-  margin-bottom: 0;
-  line-height: 40px;
-  padding-bottom: 19px;
+h1 {
+	color: #89bdd3
 }
 
-/* Custom page footer */
+.speisekarte {
+	box-shadow: 0 0 6px #333;
+	border: 1px solid #333
+}
+
+.speisekarte table {
+	border-collapse: collapse
+}
+
+.speisekarte tr {
+	cursor: pointer;
+	background-color: #e3e3e3
+}
+
+.speisekarte tr th {
+	background-color: #333;
+	color: #89bdd3;
+	padding: 20px 0px 20px 0;
+	text-align: center;
+	width: 33%
+}
+
+.speisekarte tr td {
+	border-bottom: 1px solid #89bdd3;
+	padding: 20px 0px 20px 20px;
+	text-align: left;
+	width: 33%
+}
+
+.speisekarte tr:hover {
+	background-color: #89bdd3;
+	color: white
+}
+
+.speisekarte tr:first-child td {
+	border-top: 1px solid #89bdd3
+}
+
+.speisekarte tr:last-child td {
+	border-bottom: none
+}
+
+.mybtn {
+	cursor: pointer;
+	padding: 10px
+}
+
+.mybtn_toggle {
+	color: #aaa;
+	background: #ddd
+}
+
+.btn_remove {
+	color: red
+}
+
+.btn_payed {
+	color: white;
+	background-color: green
+}
+
+.verticalText {
+	-webkit-transform: rotate(-90deg);
+	transform: rotate(-90deg);
+	height: 100%;
+	border: 1px solid black
+}
+
+.box {
+	position: relative
+}
+
+.cart {
+	list-style-type: none;
+	padding-left: 0;
+	box-shadow: 0 0 6px #333;
+	border-radius: 10px;
+	border: 1px solid #333;
+	background-color: #f8fbfd;
+	counter-reset: section
+}
+
+.cart .mybtn {
+	float: right
+}
+
+.cart li {
+	line-height: 40px;
+	border-bottom: 1px dashed #89bdd3;
+	padding: 20px
+}
+
+.cart li:last-child {
+	border-bottom: none
+}
+
+.cart li span {
+	vertical-align: middle
+}
+
+.cart li .counter:before {
+	counter-increment: section;
+	content: counter(section) ".";
+	font-style: oblique
+}
+
+.cart input {
+	position: absolute;
+	left: 0;
+	width: 100%
+}
+
+.cart .priceArea {
+	text-align: right
+}
+
+.cart .price {
+	margin-right: 20px
+}
+
+.bemerkungArea {
+	margin-left: 30px;
+	margin-right: 30px
+}
+
+.bemerkungArea span {
+	cursor: pointer
+}
+
+.bemerkungArea div {
+	border-left: 1px solid #89bdd3;
+	background: #aed2e1
+}
+
+.warenkorb {
+	margin-top: 30px
+}
+
 .footer {
   padding-top: 19px;
   color: #777;
   border-top: 1px solid #e5e5e5;
-}
-
-.container-narrow > hr {
-  margin: 30px 0;
-}
-
-/* Main marketing message and sign up button */
-.jumbotron {
-  text-align: center;
-  border-bottom: 1px solid #e5e5e5;
-}
-.jumbotron .btn {
-  font-size: 21px;
-  padding: 14px 24px;
-}
-
-/* Supporting marketing content */
-.marketing {
-  margin: 40px 0;
-}
-.marketing p + h4 {
-  margin-top: 28px;
-}
-
-/* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
-  .container {
-    max-width: 730px;
-  }
-
-  /* Remove the padding we set earlier */
-  .header,
-  .marketing,
-  .footer {
-    padding-left: 0;
-    padding-right: 0;
-  }
-  /* Space out the masthead */
-  .header {
-    margin-bottom: 30px;
-  }
-  /* Remove the bottom border on the jumbotron for visual effect */
-  .jumbotron {
-    border-bottom: 0;
-  }
 }

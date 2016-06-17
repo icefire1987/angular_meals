@@ -1,0 +1,16 @@
+[
+		{"name" : "Rind", "size": "klein", "price": "5.10"},
+		{"name" : "Rind", "size": "groß", "price": "5.60"},
+		{"name" : "Pute", "size": "klein", "price": "5.00"},
+		{"name" : "Pute", "size": "groß", "price": "5.50"},
+		{"name" : "Veggi", "size": "klein", "price": "4.60"},
+		{"name" : "Veggi", "size": "groß", "price": "5.10"},
+		{"name" : "Schwein", "size": "klein", "price": "5.00"},
+		{"name" : "Schwein", "size": "groß", "price": "5.50"},
+		{"name" : "Bacon Egg", "size": "groß", "price": "6.20"},
+		{"name" : "Machete (Chi.c.Carne)", "size": "groß", "price": "6.40"},
+		{"name" : "Pulled Pork", "size": "klein", "price": "6.60"},
+		{"name" : "Pulled Pork", "size": "groß", "price": "7.10"},
+		{"name" : "Shredded Beef", "size": "klein", "price": "6.90"},
+		{"name" : "Shredded Beef", "size": "groß", "price": "7.40"}
+	]

@@ -1,0 +1,85 @@
+<div class="container">
+	<div class="row ">
+		<div
+			class="col-xs-10 col-sm-8 col-sm-offset-2 col-xs-offset-1 speisekarte"
+			data-title="Speisekarte">
+			<div class="row">
+				<table class="col-xs-12">
+					<thead>
+						<tr>
+							<th>Hauptzutat</th>
+							<th>Size</th>
+							<th>Preis</th>
+						</tr>
+					</thead>
+				</table>
+				<table class="col-xs-12">
+					<tbody>
+						<tr ng-repeat="(key,item) in c_main.items"
+							ng-click="c_main.addToCart(item)">
+							<td>{{item.name}}</td>
+							<td>{{item.size}}</td>
+							<td>{{item.price | currency}}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+		</div>
+	</div>
+
+	<div class="row warenkorb">
+		<div class="col-xs-12 col-sm-8 col-sm-offset-2 box"
+			data-title="Warenkorb">
+			<ul class="cart">
+				<li ng-repeat="(key,item) in c_main.cart.articles track by key" >
+					<div class="row">
+						<div class="col-sm-4 col-xs-6">
+							<span class="counter"></span> 
+							<span class="zutat">{{item.name}}</span> 
+							<span class="size">{{item.size}}</span>
+						</div>
+						<div class="col-sm-4 col-xs-6">
+							<span class="person" ng-click="c_main.editPerson(item)">{{item.person}}</span> 
+							<input type="text" 
+								ng-if="item.edit==true" 
+								ng-focus="item.edit==true" 
+								ng-blur="c_main.stopEditPerson(item)"
+								ng-change="c_main.savePerson(inputfield,item)"
+								ng-value="item.person"
+								ng-model="inputfield"
+								ng-keydown="c_main.keydownFunc($event,item)"
+							>
+							<!--  <input type="text" data-bind="value: person, valueUpdate: 'afterkeydown', 
+												visible: editing, escapeKey: $parent.cancelEditing, 
+												enterKey: $parent.savePerson, event: { blur: $parent.savePerson }">-->
+						</div>
+						<div class="col-sm-4 col-xs-12 priceArea">
+							<span class="mybtn btn_remove glyphicon glyphicon-remove"
+								data-bind="click: $parent.remove"></span> <span
+								class="mybtn mybtn_toggle glyphicon glyphicon-euro"
+								data-bind="css: {btn_payed: payment}, click: $root.showCalc "></span>
+							<span class="price"
+								data-bind="text: $root.View.formatEuro($data.product().price)"></span>
+						</div>
+					</div>
+					<div class="row bemerkungArea">
+						<div class="col-xs-12 text-left">
+							<span class=" block text-left"
+								data-bind="visible: bemerkung()=='', click: $root.editBemerkung">+
+								Bemerkung</span> <span class=" block text-left text-danger"
+								data-bind="visible: bemerkung, click: $root.removeBemerkung">entfernen</span>
+
+							<input type="text"
+								data-bind="value: bemerkung, valueUpdate: 'afterkeydown', 
+												visible: editingBemerkung, escapeKey: $parent.cancelEditingBemerkung, 
+												enterKey: $parent.closeBemerkung, event: { blur: $parent.closeBemerkung }">
+							<span data-bind="text: bemerkung, click: $root.editBemerkung"></span>
+
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>

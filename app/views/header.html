@@ -1,0 +1,22 @@
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12 col-sm-6">
+			<h1>
+				Burrito-Calculator <small class="center-block"> <span
+					class="glyphicon glyphicon-earphone"></span> <span>030 / 325
+						398 68</span>
+				</small>
+			</h1>
+		</div>
+		<div class="col-xs-12 col-sm-6">
+			<div class="text-right" style="cursor: help">
+				<p>
+					<span>{{c_header.cart.articles.length}}</span><span> Artikel im Warenkorb</span>
+				</p>
+				<p>
+					<span>Summe: </span><span>{{c_header.total() | currency }}</span>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>

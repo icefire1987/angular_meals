@@ -1,23 +1,136 @@
-<div class="jumbotron">
-  <h1>'Allo, 'Allo!</h1>
-  <p class="lead">
-    <img src="images/yeoman.png" alt="I'm Yeoman"><br>
-    Always a pleasure scaffolding your apps.
-  </p>
-  <p><a class="btn btn-lg btn-success" ng-href="#/">Splendid!<span class="glyphicon glyphicon-ok"></span></a></p>
+<div class="container">
+	<div class="row ">
+		<div class="col-xs-10 col-sm-8 col-sm-offset-2 col-xs-offset-1 speisekarte " data-title="Speisekarte">
+			<div class="row">
+				<table class="col-xs-12">
+					<thead>
+						<tr>
+							<th>Hauptzutat</th>
+							<th>Size</th>
+							<th>Preis</th>
+						</tr>
+					</thead>
+				</table>
+				<table class="col-xs-12">
+					<tbody>
+						<!--  ko foreach: Model.stock -->
+						<tr data-bind="click: $parent.addToCart">
+							<td data-bind="text: name"></td>
+							<td data-bind="text: size"></td>
+							<td data-bind="text: $root.View.formatEuro(price)"></td>
+						</tr>
+						<!-- /ko -->
+					</tbody>
+				</table>
+			</div>
+
+		</div>
+	</div>
+
+
+
+	<div class="row warenkorb">
+		<div class="col-xs-12 col-sm-8 col-sm-offset-2 box"
+			data-title="Warenkorb">
+			<ul
+				data-bind="template: {foreach: Model.cart,beforeRemove: View.removeCartItem}"
+				class="cart">
+				<li>
+					<div class="row">
+						<div class="col-sm-4 col-xs-6">
+							<span class="counter"></span> <span class="zutat"
+								data-bind="text: $data.product().name"></span> <span
+								class="size" data-bind="text: $data.product().size"></span>
+						</div>
+						<div class="col-sm-4 col-xs-6">
+							<span class="person"
+								data-bind="text: person, click: $parent.edit"></span> <input
+								type="text"
+								data-bind="value: person, valueUpdate: 'afterkeydown', 
+												visible: editing, escapeKey: $parent.cancelEditing, 
+												enterKey: $parent.savePerson, event: { blur: $parent.savePerson }">
+						</div>
+						<div class="col-sm-4 col-xs-12 priceArea">
+
+							<span class="mybtn btn_remove glyphicon glyphicon-remove"
+								data-bind="click: $parent.remove"></span> <span
+								class="mybtn mybtn_toggle glyphicon glyphicon-euro"
+								data-bind="css: {btn_payed: payment}, click: $root.showCalc "></span>
+							<span class="price"
+								data-bind="text: $root.View.formatEuro($data.product().price)"></span>
+						</div>
+					</div>
+					<div class="row bemerkungArea">
+						<div class="col-xs-12 text-left">
+							<span class=" block text-left"
+								data-bind="visible: bemerkung()=='', click: $root.editBemerkung">+
+								Bemerkung</span> <span class=" block text-left text-danger"
+								data-bind="visible: bemerkung, click: $root.removeBemerkung">entfernen</span>
+
+							<input type="text"
+								data-bind="value: bemerkung, valueUpdate: 'afterkeydown', 
+												visible: editingBemerkung, escapeKey: $parent.cancelEditingBemerkung, 
+												enterKey: $parent.closeBemerkung, event: { blur: $parent.closeBemerkung }">
+							<span data-bind="text: bemerkung, click: $root.editBemerkung"></span>
+
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
 </div>
 
-<div class="row marketing">
-  <h4>HTML5 Boilerplate</h4>
-  <p>
-    HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.
-  </p>
+<div id="modal_calc" class="modal fade container" role="dialog">
+	<div class="modal-dialog">
 
-  <h4>Angular</h4>
-  <p>
-    AngularJS is a toolset for building the framework most suited to your application development.
-  </p>
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">Kasse</h4>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-xs-6 text-right">
+						<span>zu zahlen:</span>
+					</div>
+					<div class="col-xs-6 text-left">
+						<span data-bind="text: currentItem().product().price;"></span>
+					</div>
 
-  <h4>Karma</h4>
-  <p>Spectacular Test Runner for JavaScript.</p>
+				</div>
+				<div class="row">
+					<div class="col-xs-6 text-right">
+						<span>gegeben:</span>
+					</div>
+					<div class="col-xs-6 text-left">
+						<label for="gegeben"> <input id="gegeben" type="number"
+							data-bind="textInput: payed" size="5" style="width: 50%">
+						</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-12 ">
+						<hr>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-6 text-right">
+						<span>Rückgeld:</span>
+					</div>
+					<div class="col-xs-6 text-left">
+						<span data-bind="text: calcMoney"></span>
+					</div>
+
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-success" data-dismiss="modal"
+					data-bind="click: payItem">Bezahlt</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal">Abbrechen</button>
+			</div>
+		</div>
+
+	</div>
 </div>
