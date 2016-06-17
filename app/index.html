@@ -24,19 +24,19 @@
     <div class="header">     
         <div ng-include="'views/header.html'" ng-controller="HeaderCtrl as c_header"></div>
     </div>
-	<div>
-        <div ng-include="'views/speisekarte.html'" ng-controller="MainCtrl as c_main"></div>
-    </div>
+
+        <div ui-view></div>
+
     
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/angular/local_de.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
-
+	<script src="bower_components/angular/local_de.js"></script>
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
     <script src="scripts/app.js"></script>
     <script src="scripts/controllers/main.js"></script>
